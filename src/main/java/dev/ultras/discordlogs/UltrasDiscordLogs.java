@@ -87,7 +87,7 @@ public final class UltrasDiscordLogs extends JavaPlugin {
 
             connections = new DiscordConnectionManager(log, s.requestTimeoutMs);
             queue = new DiscordLogQueue(log, tuning(s));
-            connections.load(config.discord(), config.defaultConnectionId(), report);
+            connections.load(config.discord(), config.defaultConnectionId(), config.botConfig(), report);
 
             hooks = new HookManager(this);
             hooks.init();
@@ -158,7 +158,7 @@ public final class UltrasDiscordLogs extends JavaPlugin {
         ValidationReport r = config.load();
         Settings s = config.settings();
         clock = new Clock(s.zone, s.dateFormat, s.timeFormat);
-        connections.load(config.discord(), config.defaultConnectionId(), r);
+        connections.load(config.discord(), config.defaultConnectionId(), config.botConfig(), r);
         queue.tune(tuning(s));
         queue.retainLanes(connections.laneKeys());
         logs.invalidateCache();

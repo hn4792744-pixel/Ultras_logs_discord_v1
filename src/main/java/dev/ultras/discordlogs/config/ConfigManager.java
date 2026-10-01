@@ -18,10 +18,11 @@ import java.util.Map;
 
 /** Loads, validates and exposes every YAML file. A broken file never replaces a working configuration. */
 public final class ConfigManager {
-    public static final String[] FILES = {"config.yml", "discord.yml", "logs.yml", "messages.yml", "messages_en.yml", "messages_ar.yml"};
+    public static final String[] FILES = {"config.yml", "discord.yml", "bot.yml", "logs.yml", "messages.yml", "messages_en.yml", "messages_ar.yml"};
     private final UltrasDiscordLogs plugin;
     private final Map<String, FileConfiguration> files = new HashMap<>();
     private volatile Settings settings;
+    private volatile BotConfig botConfig = new BotConfig(false, "", Map.of());
     private final RuntimeOverrides overrides;
 
     public ConfigManager(UltrasDiscordLogs plugin) {
@@ -31,6 +32,7 @@ public final class ConfigManager {
 
     public RuntimeOverrides overrides() { return overrides; }
     public Settings settings() { return settings; }
+    public BotConfig botConfig() { return botConfig; }
     public FileConfiguration config() { return files.get("config.yml"); }
     public FileConfiguration messages() { return files.get("messages.yml"); }
 
@@ -72,6 +74,7 @@ public final class ConfigManager {
         files.clear();
         files.putAll(next);
         settings = new Settings(config(), overrides);
+        botConfig = BotConfig.load(next.get("bot.yml"));
         plugin.log().setDebug(settings.debug);
         validate(report);
         return report;
@@ -124,6 +127,18 @@ public final class ConfigManager {
             String snd = config().getString("sounds." + k + ".sound", "");
             if (!snd.isBlank() && !plugin.sounds().isValid(snd)) r.warn("Invalid sound '" + snd + "' for sounds." + k + ".");
         }
+        BotConfig b = botConfig;
+        if (b.enabled()) {
+            if (!b.configured()) {
+                r.warn("bot.yml is enabled but the bot token is not configured or has an invalid format.");
+            }
+            for (String logId : b.channels().keySet()) {
+                if (!b.channelValid(logId)) {
+                    r.error("bot.yml has an invalid channel ID for log '" + logId + "'.");
+                }
+            }
+        }
+
         checkInterval(r, "logs.server-top.settings.interval", "1m");
         checkInterval(r, "logs.server-stats.settings.interval", "30m");
         String mode = settings.rotationMode;

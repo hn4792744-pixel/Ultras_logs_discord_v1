@@ -1,0 +1,46 @@
+# Optional Discord Bot transport.
+# One bot token is shared by all configured log channels.
+# Keep this file private and NEVER share the token.
+
+bot:
+  enabled: false
+  token: "BOT_TOKEN_HERE"
+
+  channels:
+    creative-item: "CHANNEL_ID_HERE"
+    gamemode: "CHANNEL_ID_HERE"
+    teleport: "CHANNEL_ID_HERE"
+    join: "CHANNEL_ID_HERE"
+    quit: "CHANNEL_ID_HERE"
+    first-join: "CHANNEL_ID_HERE"
+    player-stats: "CHANNEL_ID_HERE"
+    player-kill: "CHANNEL_ID_HERE"
+    death: "CHANNEL_ID_HERE"
+    advancement: "CHANNEL_ID_HERE"
+    vanish: "CHANNEL_ID_HERE"
+    sign-change: "CHANNEL_ID_HERE"
+    book-edit: "CHANNEL_ID_HERE"
+    economy-transaction: "CHANNEL_ID_HERE"
+    item-drop: "CHANNEL_ID_HERE"
+    item-pickup: "CHANNEL_ID_HERE"
+    container-open: "CHANNEL_ID_HERE"
+    block-break: "CHANNEL_ID_HERE"
+    block-place: "CHANNEL_ID_HERE"
+    punishments: "CHANNEL_ID_HERE"
+    freeze: "CHANNEL_ID_HERE"
+    chat: "CHANNEL_ID_HERE"
+    commands: "CHANNEL_ID_HERE"
+    ip-mismatch: "CHANNEL_ID_HERE"
+    op-change: "CHANNEL_ID_HERE"
+    whitelist-change: "CHANNEL_ID_HERE"
+    permission-change: "CHANNEL_ID_HERE"
+    server-top: "CHANNEL_ID_HERE"
+    server-stats: "CHANNEL_ID_HERE"
+    server-start: "CHANNEL_ID_HERE"
+    server-stop: "CHANNEL_ID_HERE"
+    server-reload: "CHANNEL_ID_HERE"
+    world-load: "CHANNEL_ID_HERE"
+    world-unload: "CHANNEL_ID_HERE"
+    gamerule: "CHANNEL_ID_HERE"
+    weather: "CHANNEL_ID_HERE"
+    time-change: "CHANNEL_ID_HERE"

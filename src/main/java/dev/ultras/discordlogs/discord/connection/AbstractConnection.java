@@ -24,7 +24,7 @@ abstract class AbstractConnection implements DiscordConnection {
         this.settings = s;
         this.http = http;
         SecretRedactor.register(s.secret());
-        if (!s.enabled()) { status = ConnectionStatus.DISABLED; detail = "disabled in discord.yml"; }
+        if (!s.enabled()) { status = ConnectionStatus.DISABLED; detail = "disabled in configuration"; }
         else if (!s.configured()) { status = bad(); detail = "not configured yet"; }
         else if (!s.formatValid()) { status = bad(); detail = "invalid format"; }
         else { status = ConnectionStatus.UNKNOWN; detail = "not validated yet"; }

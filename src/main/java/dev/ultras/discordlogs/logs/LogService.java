@@ -110,6 +110,11 @@ public final class LogService {
     }
 
     private DiscordConnection resolveConnection(LogSettings ls) {
+        DiscordConnection bot = plugin.connections().botConnection(ls.id());
+        if (bot != null && bot.settings().enabled() && bot.settings().formatValid()) {
+            return bot;
+        }
+
         DiscordConnection c = plugin.connections().get(ls.connection());
         Settings s = plugin.settings();
         if (s.fallbackToDefault && (c == null || (c.settings().enabled() && !c.settings().configured()))) {
