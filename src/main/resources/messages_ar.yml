@@ -1,0 +1,226 @@
+# النصوص العربية. الألوان بـ & والمتغيرات بـ %name%.
+system:
+  language-updated: "&7◉ تم تحديث اللغة: &f%language%&7."
+  reloaded: "&a◉ تمت إعادة تحميل الإعدادات. &7الأخطاء: &f%errors% &7التحذيرات: &f%warnings%"
+  reload-issue: "&e◉ %message%"
+  reload-failed: "&c◉ فشلت إعادة التحميل. الإعدادات السابقة ما زالت فعّالة. راجع الكونسول."
+  gui-disabled: "&c◉ القائمة معطّلة من config.yml."
+  players-only: "&c◉ القائمة للاعبين فقط. استخدم &f/uc_discord_logs reload &cأو اسم لوغ."
+errors:
+  no-permission: "&c◉ ليس لديك صلاحية."
+test:
+  sent: "&a◉ تم إرسال لوغ تجريبي &f%log% &aعبر الاتصال &f%connection%&a."
+  unknown-log: "&c◉ لوغ غير معروف: &f%log%"
+  disabled: "&c◉ اللوغ &f%log% &cمعطّل."
+  no-connection: "&c◉ اللوغ &f%log% &cليس له اتصال صالح."
+  invalid-connection: "&c◉ الاتصال &f%connection% &cغير مُعدّ أو غير صالح."
+  cooldown: "&e◉ انتظر &f%seconds% ث &eقبل إرسال اختبار آخر."
+  failed: "&c◉ تعذّر إدراج اللوغ التجريبي في الطابور."
+discord:
+  test-footer: "لوغ تجريبي"
+  # عناوين Discord المترجمة (اختياري، تتجاوز messages.yml)
+  join: {title: "🟢 دخل لاعب"}
+  quit: {title: "⚪ خرج لاعب"}
+  first-join: {title: "🎉 أول دخول"}
+  player-stats: {title: "📊 إحصائيات اللاعب"}
+  player-kill: {title: "⚔️ قتل لاعب"}
+  death: {title: "💀 وفاة لاعب"}
+  creative-item: {title: "🎮 عنصر كرييتف"}
+  gamemode: {title: "🔄 تغيير وضع اللعب"}
+  teleport: {title: "🌀 تنقّل"}
+  advancement: {title: "🏆 إنجاز"}
+  vanish: {title: "👻 اختفاء"}
+  chat: {title: "💬 الدردشة"}
+  commands: {title: "⌨️ أمر"}
+  ip-mismatch: {title: "⚠️ احتمال اختلاف حساب/IP"}
+  server-top: {title: "🏅 أفضل اللاعبين"}
+  server-stats: {title: "📈 إحصائيات السيرفر"}
+discord-field-names:
+  player: "اللاعب"
+  uuid: "UUID"
+  rank: "الرتبة"
+  op: "أوب"
+  vanish: "اختفاء"
+  world: "العالم"
+  location: "الموقع"
+  date: "التاريخ"
+  time: "الوقت"
+  reason: "السبب"
+  duration: "المدة"
+  executor: "المنفّذ"
+  target: "الهدف"
+  command: "الأمر"
+  source: "المصدر"
+gui:
+  close: "&c&lإغلاق"
+  back: "&e&lرجوع"
+  prev: "&e&lالصفحة السابقة"
+  next: "&e&lالصفحة التالية"
+  status:
+    enabled: "مفعّل"
+    disabled: "معطّل"
+  main:
+    title: "&8ULTRAS &7| لوغات Discord"
+    info:
+      name: "&b&lULTRAS Discord Logs"
+      lore: |
+        &7الإصدار: &f%version%
+        &7الطابور: &f%queue% &7أُرسل: &a%sent% &7فشل: &c%failed%
+        &7الربط: &f%hooks%
+  category:
+    all:
+      name: "&f&l📋 كل اللوغات"
+      plain: "كل اللوغات"
+      lore: |
+        &7جميع اللوغات المتاحة.
+        &7المفعّل: &a%enabled%&7/&f%total%
+    punishments:
+      name: "&c&l🚫 العقوبات"
+      plain: "العقوبات"
+      lore: |
+        &7حظر، طرد، كتم، تحذير، تجميد.
+        &7المفعّل: &a%enabled%&7/&f%total%
+    gameplay:
+      name: "&a&l🎮 اللعب"
+      plain: "اللعب"
+      lore: |
+        &7عناصر الكرييتف، وضع اللعب، التنقّل...
+        &7المفعّل: &a%enabled%&7/&f%total%
+    players:
+      name: "&b&l👤 اللاعبون"
+      plain: "اللاعبون"
+      lore: |
+        &7دخول، خروج، أول دخول، إحصائيات.
+        &7المفعّل: &a%enabled%&7/&f%total%
+    combat:
+      name: "&4&l⚔ القتال"
+      plain: "القتال"
+      lore: |
+        &7القتل والوفيات.
+        &7المفعّل: &a%enabled%&7/&f%total%
+    chat:
+      name: "&7&l💬 الدردشة"
+      plain: "الدردشة"
+      lore: |
+        &7الشات والأوامر.
+        &7المفعّل: &a%enabled%&7/&f%total%
+    security:
+      name: "&6&l🛡 الأمان"
+      plain: "الأمان"
+      lore: |
+        &7اختلاف IP، OP، وايت ليست، الصلاحيات.
+        &7المفعّل: &a%enabled%&7/&f%total%
+    statistics:
+      name: "&9&l📊 الإحصائيات"
+      plain: "الإحصائيات"
+      lore: |
+        &7أفضل اللاعبين، إحصائيات وأحداث السيرفر.
+        &7المفعّل: &a%enabled%&7/&f%total%
+    settings:
+      name: "&e&l⚙ الإعدادات"
+      lore: |
+        &7الاتصالات والتبديلات وإعادة التحميل.
+    language:
+      name: "&d&l🌐 اللغة"
+      lore: |
+        &7غيّر لغتك أنت فقط.
+  logs:
+    title: "&8%category% &7(%page%/%pages%)"
+  log:
+    name-enabled: "&a&l%id%"
+    name-disabled: "&7&l%id%"
+    lore: |
+      &7%description%
+      &8
+      &7الحالة: &f%status%
+      &7الاتصال: &f%connection% &8(%state%)
+      &7النوع: &f%type%
+      &7عدد اللوغات: &f%count%
+      &8
+      &eضغطة يسار: &7إرسال لوغ تجريبي
+      &eضغطة يمين: &7تفعيل / تعطيل
+  delete:
+    button: "&c&lحذف اللوغات"
+    button-lore: |
+      &7يحذف ملفات اللوغات المحلية لهذه المجموعة.
+      &7سيُطلب منك التأكيد.
+    title: "&4&l⚠ تأكيد الحذف"
+    confirm: "&c&l[ حذف ]"
+    confirm-lore: |
+      &7النطاق: &f%scope%
+      &cلا يمكن التراجع من القائمة.
+    info: "&e&lحذف اللوغات المحلية؟"
+    info-lore: |
+      &7النطاق: &f%scope%
+      &7رسائل Discord لا تتأثر.
+    cancel: "&a&l[ إلغاء ]"
+    done: "&a◉ تم حذف &f%count% &aملف لـ &f%scope%&a."
+    failed: "&c◉ تعذّر حذف اللوغات. راجع الكونسول."
+  settings:
+    title: "&8ULTRAS &7| الإعدادات"
+    sounds:
+      name: "&e&lالأصوات: &f%state%"
+      lore: "&7اضغط للتبديل (أدمن)."
+    log-ips:
+      name: "&e&lتسجيل عناوين IP: &f%state%"
+      lore: "&7اضغط للتبديل (أدمن)."
+    local-logs:
+      name: "&e&lحفظ اللوغات محلياً: &f%state%"
+      lore: "&7اضغط للتبديل (أدمن)."
+    connections: "&b&lالاتصالات"
+    connections-lore: "&7حالة كل اتصال Discord."
+    reload: "&a&lإعادة التحميل"
+    reload-lore: "&7إعادة تحميل كل ملفات YAML."
+  connections:
+    title: "&8ULTRAS &7| الاتصالات"
+    name: "&f&l%id% &8(%state%)"
+    lore: |
+      &7النوع: &f%type%
+      &7التفاصيل: &f%detail%
+      &7أُرسل: &a%sent% &7فشل: &c%failed% &7بالانتظار: &e%pending%
+      &8
+      &eاضغط: &7فحص (قراءة فقط)
+    valid: "&a◉ الاتصال &f%id% &aيعمل."
+    invalid: "&c◉ تعذّر التحقق من الاتصال &f%id%&c."
+  language:
+    title: "&8ULTRAS &7| اللغة"
+    select: "&7اضغط لاستخدام هذه اللغة."
+    selected: "&aاللغة الحالية."
+log-descriptions:
+  join: "دخول لاعب إلى السيرفر."
+  quit: "خروج لاعب من السيرفر."
+  first-join: "أول دخول للاعب."
+  player-stats: "إحصائيات اللاعبين العائدين."
+  player-kill: "لاعب يقتل لاعباً آخر."
+  death: "وفاة لاعب بدون قاتل لاعب."
+  creative-item: "لاعب يأخذ عنصراً في الكرييتف."
+  gamemode: "تغيّر وضع لعب لاعب."
+  teleport: "التنقّلات المهمة."
+  advancement: "حصول لاعب على إنجاز."
+  vanish: "تفعيل/إلغاء الاختفاء (يحتاج بلغن فانش)."
+  sign-change: "تعديل لوحة."
+  book-edit: "تعديل أو توقيع كتاب."
+  economy-transaction: "تغيّر الرصيد (EssentialsX)."
+  item-drop: "ثقيل: إسقاط العناصر."
+  item-pickup: "ثقيل: التقاط العناصر."
+  container-open: "ثقيل: فتح الحاويات."
+  block-break: "ثقيل: كسر البلوكات."
+  block-place: "ثقيل: وضع البلوكات."
+  punishments: "العقوبات المؤكدة فقط."
+  freeze: "تجميد / إلغاء تجميد (عبر حدث API)."
+  chat: "رسائل الشات."
+  commands: "الأوامر التي يكتبها اللاعبون."
+  ip-mismatch: "احتمال اختلاف حساب/IP."
+  op-change: "OP / DeOP (مؤكد)."
+  whitelist-change: "إضافة/إزالة وايت ليست (مؤكد)."
+  permission-change: "تغيّر الصلاحيات (LuckPerms)."
+  server-top: "أفضل اللاعبين الدوري."
+  server-stats: "إحصائيات السيرفر الدورية."
+  server-start: "تشغيل السيرفر."
+  server-stop: "إيقاف السيرفر."
+  server-reload: "إعادة تحميل السيرفر."
+  world-load: "تحميل عالم."
+  world-unload: "إلغاء تحميل عالم."
+  gamerule: "تغيّر قاعدة لعبة."
+  weather: "ثقيل: تغيّر الطقس."
+  time-change: "ثقيل: تخطي الوقت."

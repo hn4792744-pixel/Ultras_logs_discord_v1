@@ -1,0 +1,193 @@
+# English texts. Colors use & codes. Placeholders use %name%.
+system:
+  language-updated: "&7◉ Language updated: &f%language%&7."
+  reloaded: "&a◉ Configuration reloaded. &7Errors: &f%errors% &7Warnings: &f%warnings%"
+  reload-issue: "&e◉ %message%"
+  reload-failed: "&c◉ Reload failed. The previous configuration is still active. See console."
+  gui-disabled: "&c◉ The GUI is disabled in config.yml."
+  players-only: "&c◉ Only players can open the menu. Use &f/uc_discord_logs reload &cor a log name."
+errors:
+  no-permission: "&c◉ You do not have permission."
+test:
+  sent: "&a◉ Test log &f%log% &asent through connection &f%connection%&a."
+  unknown-log: "&c◉ Unknown log: &f%log%"
+  disabled: "&c◉ Log &f%log% &cis disabled."
+  no-connection: "&c◉ Log &f%log% &chas no valid connection."
+  invalid-connection: "&c◉ Connection &f%connection% &cis not configured or invalid."
+  cooldown: "&e◉ Please wait &f%seconds%s &ebefore sending another test."
+  failed: "&c◉ The test log could not be queued."
+discord:
+  test-footer: "TEST LOG"
+gui:
+  close: "&c&lClose"
+  back: "&e&lBack"
+  prev: "&e&lPrevious page"
+  next: "&e&lNext page"
+  status:
+    enabled: "Enabled"
+    disabled: "Disabled"
+  main:
+    title: "&8ULTRAS &7| Discord Logs"
+    info:
+      name: "&b&lULTRAS Discord Logs"
+      lore: |
+        &7Version: &f%version%
+        &7Queue: &f%queue% &7Sent: &a%sent% &7Failed: &c%failed%
+        &7Hooks: &f%hooks%
+  category:
+    all:
+      name: "&f&l📋 Logs"
+      plain: "All logs"
+      lore: |
+        &7Every available log.
+        &7Enabled: &a%enabled%&7/&f%total%
+    punishments:
+      name: "&c&l🚫 Punishments"
+      plain: "Punishments"
+      lore: |
+        &7Bans, kicks, mutes, warnings, freeze.
+        &7Enabled: &a%enabled%&7/&f%total%
+    gameplay:
+      name: "&a&l🎮 Gameplay"
+      plain: "Gameplay"
+      lore: |
+        &7Creative items, gamemode, teleports...
+        &7Enabled: &a%enabled%&7/&f%total%
+    players:
+      name: "&b&l👤 Players"
+      plain: "Players"
+      lore: |
+        &7Join, quit, first join, statistics.
+        &7Enabled: &a%enabled%&7/&f%total%
+    combat:
+      name: "&4&l⚔ Combat"
+      plain: "Combat"
+      lore: |
+        &7Kills and deaths.
+        &7Enabled: &a%enabled%&7/&f%total%
+    chat:
+      name: "&7&l💬 Chat"
+      plain: "Chat"
+      lore: |
+        &7Chat and commands.
+        &7Enabled: &a%enabled%&7/&f%total%
+    security:
+      name: "&6&l🛡 Security"
+      plain: "Security"
+      lore: |
+        &7IP mismatch, OP, whitelist, permissions.
+        &7Enabled: &a%enabled%&7/&f%total%
+    statistics:
+      name: "&9&l📊 Statistics"
+      plain: "Statistics"
+      lore: |
+        &7Server top, server statistics, server events.
+        &7Enabled: &a%enabled%&7/&f%total%
+    settings:
+      name: "&e&l⚙ Settings"
+      lore: |
+        &7Connections, toggles and reload.
+    language:
+      name: "&d&l🌐 Language"
+      lore: |
+        &7Change your own language.
+  logs:
+    title: "&8%category% &7(%page%/%pages%)"
+  log:
+    name-enabled: "&a&l%id%"
+    name-disabled: "&7&l%id%"
+    lore: |
+      &7%description%
+      &8
+      &7Status: &f%status%
+      &7Connection: &f%connection% &8(%state%)
+      &7Type: &f%type%
+      &7Log Count: &f%count%
+      &8
+      &eLeft click: &7send test log
+      &eRight click: &7enable / disable
+  delete:
+    button: "&c&lDelete Logs"
+    button-lore: |
+      &7Deletes the local log files of this group.
+      &7You will be asked to confirm.
+    title: "&4&l⚠ Confirm Delete"
+    confirm: "&c&l[ DELETE ]"
+    confirm-lore: |
+      &7Scope: &f%scope%
+      &cThis cannot be undone from the GUI.
+    info: "&e&lDelete local logs?"
+    info-lore: |
+      &7Scope: &f%scope%
+      &7Discord messages are not affected.
+    cancel: "&a&l[ CANCEL ]"
+    done: "&a◉ Deleted &f%count% &afile(s) for &f%scope%&a."
+    failed: "&c◉ Could not delete the logs. See console."
+  settings:
+    title: "&8ULTRAS &7| Settings"
+    sounds:
+      name: "&e&lSounds: &f%state%"
+      lore: "&7Click to toggle (admin)."
+    log-ips:
+      name: "&e&lLog IP addresses: &f%state%"
+      lore: "&7Click to toggle (admin)."
+    local-logs:
+      name: "&e&lSave local logs: &f%state%"
+      lore: "&7Click to toggle (admin)."
+    connections: "&b&lConnections"
+    connections-lore: "&7Status of every Discord connection."
+    reload: "&a&lReload"
+    reload-lore: "&7Reload all YAML files."
+  connections:
+    title: "&8ULTRAS &7| Connections"
+    name: "&f&l%id% &8(%state%)"
+    lore: |
+      &7Type: &f%type%
+      &7Detail: &f%detail%
+      &7Sent: &a%sent% &7Failed: &c%failed% &7Pending: &e%pending%
+      &8
+      &eClick: &7validate (read-only check)
+    valid: "&a◉ Connection &f%id% &ais working."
+    invalid: "&c◉ Connection &f%id% &ccould not be validated."
+  language:
+    title: "&8ULTRAS &7| Language"
+    select: "&7Click to use this language."
+    selected: "&aCurrently selected."
+log-descriptions:
+  join: "A player joins the server."
+  quit: "A player leaves the server."
+  first-join: "A player joins for the first time."
+  player-stats: "Statistics of returning players."
+  player-kill: "A player kills another player."
+  death: "A player dies without a player killer."
+  creative-item: "A player takes an item in creative mode."
+  gamemode: "A player's gamemode changes."
+  teleport: "Important teleports."
+  advancement: "A player earns an advancement."
+  vanish: "Vanish on/off (needs a vanish plugin)."
+  sign-change: "A sign is edited."
+  book-edit: "A book is edited or signed."
+  economy-transaction: "Balance changes (EssentialsX)."
+  item-drop: "Heavy: items dropped."
+  item-pickup: "Heavy: items picked up."
+  container-open: "Heavy: containers opened."
+  block-break: "Heavy: blocks broken."
+  block-place: "Heavy: blocks placed."
+  punishments: "Verified punishments only."
+  freeze: "Freeze / unfreeze (via API event)."
+  chat: "Chat messages."
+  commands: "Commands typed by players."
+  ip-mismatch: "Potential Account/IP Mismatch."
+  op-change: "OP / DeOP (verified)."
+  whitelist-change: "Whitelist add / remove (verified)."
+  permission-change: "Permission changes (LuckPerms)."
+  server-top: "Periodic server top."
+  server-stats: "Periodic server statistics."
+  server-start: "Server started."
+  server-stop: "Server stopping."
+  server-reload: "Server reloaded."
+  world-load: "A world is loaded."
+  world-unload: "A world is unloaded."
+  gamerule: "A gamerule changes."
+  weather: "Heavy: weather changes."
+  time-change: "Heavy: time skips."

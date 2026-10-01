@@ -1,0 +1,35 @@
+name: ULTRAS_Discord_logs_v1
+version: '${version}'
+main: dev.ultras.discordlogs.UltrasDiscordLogs
+api-version: '26.2'
+description: Webhook-first Discord logging for Minecraft. Bot support is optional.
+authors: [ULTRAS]
+load: POSTWORLD
+softdepend: [Vault, LuckPerms, PlaceholderAPI, floodgate, Geyser-Spigot, Essentials, SuperVanish, PremiumVanish, AdvancedBan, CoreProtect, WorldGuard]
+
+commands:
+  uc_discord_logs:
+    description: Open the ULTRAS Discord Logs menu, reload, or send a test log.
+    usage: /uc_discord_logs [reload|<log-name>]
+
+permissions:
+  ultras.discordlogs.use:
+    description: Open the GUI
+    default: op
+  ultras.discordlogs.reload:
+    description: Reload the configuration
+    default: op
+  ultras.discordlogs.test:
+    description: Send test logs and validate connections
+    default: op
+  ultras.discordlogs.delete:
+    description: Delete local logs from the GUI
+    default: op
+  ultras.discordlogs.admin:
+    description: Everything, including toggling logs and settings in the GUI
+    default: op
+    children:
+      ultras.discordlogs.use: true
+      ultras.discordlogs.reload: true
+      ultras.discordlogs.test: true
+      ultras.discordlogs.delete: true

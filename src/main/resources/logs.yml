@@ -1,0 +1,152 @@
+# Per-log configuration. Every log can be enabled/disabled and routed to any connection of discord.yml.
+# Many logs may share one connection; one log may have its own.
+# Optional keys per log: template (messages.yml key), permission (test permission), color, dedupe-ms, settings.
+# Heavy logs are disabled by default.
+
+logs:
+  creative-item:
+    enabled: true
+    connection: gamemode
+    dedupe-ms: 0
+    settings:
+      gain-check: true          # only log when the inventory really gains the item (see README)
+  gamemode:
+    enabled: true
+    connection: gamemode
+    dedupe-ms: 0
+    settings:
+      ignored-causes: []
+  teleport:
+    enabled: true
+    connection: teleport
+    dedupe-ms: 0
+    settings:
+      ignored-causes: [SPECTATE, DISMOUNT, EXIT_BED]
+  join:
+    enabled: true
+    connection: join
+    dedupe-ms: 0
+  quit:
+    enabled: true
+    connection: quit
+    dedupe-ms: 0
+  first-join:
+    enabled: true
+    connection: players
+  player-stats:
+    enabled: true
+    connection: players
+  player-kill:
+    enabled: true
+    connection: deaths
+    dedupe-ms: 0
+  death:
+    enabled: true
+    connection: deaths
+    dedupe-ms: 0
+  advancement:
+    enabled: true
+    connection: gameplay
+  vanish:
+    enabled: true
+    connection: staff
+  sign-change:
+    enabled: true
+    connection: gameplay
+  book-edit:
+    enabled: true
+    connection: gameplay
+  economy-transaction:
+    enabled: true
+    connection: gameplay
+  item-drop:
+    enabled: false
+    connection: gameplay
+  item-pickup:
+    enabled: false
+    connection: gameplay
+  container-open:
+    enabled: false
+    connection: gameplay
+  block-break:
+    enabled: false
+    connection: gameplay
+  block-place:
+    enabled: false
+    connection: gameplay
+  punishments:
+    enabled: true
+    connection: punishments
+    settings:
+      require-confirmation: true   # only log punishments that were verified (never just a typed command)
+      kick-ignored-causes: [TIMEOUT, BANNED, IP_BANNED]
+  freeze:
+    enabled: true
+    connection: staff
+  chat:
+    enabled: true
+    connection: chat
+    dedupe-ms: 0
+    settings:
+      max-length: 1000
+      ignored-patterns: []      # regex; matching messages are not logged
+      masked-words: []          # replaced with ***
+      blacklisted-words: []     # messages containing these are not logged
+  commands:
+    enabled: true
+    connection: commands
+    settings:
+      blacklist: ["login", "register", "l", "reg", "changepassword", "unregister"]
+      whitelist: []             # when not empty, ONLY these commands are logged
+  ip-mismatch:
+    enabled: true
+    connection: security
+    settings:
+      only-new-ips: true        # alert only for an IP this account has never used before
+  op-change:
+    enabled: true
+    connection: security
+  whitelist-change:
+    enabled: true
+    connection: security
+  permission-change:
+    enabled: true
+    connection: security
+  server-top:
+    enabled: true
+    connection: statistics
+    settings:
+      interval: 1m
+      top-size: 3
+      categories: {kills: true, deaths: true, blocks_broken: true, blocks_placed: true, playtime: true, distance: true, damage_dealt: true, mob_kills: true}
+  server-stats:
+    enabled: true
+    connection: statistics
+    settings:
+      interval: 30m
+      reset-activity-after-report: true
+      stats: {online-players: true, total-joins: true, total-quits: true, active-players: true, unique-players: true, new-players: true, punishments: true, deaths: true, player-kills: true, commands: true, chat-messages: true, most-active: true, uptime: true, tps: true, mspt: true, memory: true, cpu: true, java-version: true, plugins: true, worlds: true}
+  server-start:
+    enabled: true
+    connection: server
+  server-stop:
+    enabled: true
+    connection: server
+  server-reload:
+    enabled: true
+    connection: server
+  world-load:
+    enabled: true
+    connection: server
+  world-unload:
+    enabled: true
+    connection: server
+  gamerule:
+    enabled: true
+    connection: server
+  weather:
+    enabled: false
+    connection: server
+  time-change:
+    enabled: false
+    connection: server

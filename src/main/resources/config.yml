@@ -1,0 +1,72 @@
+# ULTRAS_Discord_logs_v1 - main configuration
+# Webhooks are the default transport. A Discord bot is optional (see discord.yml).
+
+plugin:
+  prefix: "&c&lULTRAS &8|"
+  language: en          # en | ar  (default for everyone; each player can choose their own in the GUI)
+  bold: true            # all Minecraft messages bold
+  small-caps: true      # small-caps style for English messages and GUI titles
+
+settings:
+  debug: false
+  async-logging: true   # keep true in production
+  save-local-logs: true
+  timezone: "SYSTEM"    # SYSTEM or e.g. Asia/Baghdad (restart after changing: affects log ids)
+  date-format: "yyyy-MM-dd"
+  time-format: "HH:mm:ss"
+
+test:
+  cooldown-seconds: 10
+
+gui:
+  enabled: true
+
+sounds:
+  enabled: true
+  click:
+    sound: UI_BUTTON_CLICK
+    volume: 0.5
+    pitch: 1.0
+  success:
+    sound: ENTITY_PLAYER_LEVELUP
+    volume: 0.4
+    pitch: 1.2
+  error:
+    sound: BLOCK_NOTE_BLOCK_BASS
+    volume: 0.4
+    pitch: 0.8
+
+security:
+  log-ip-addresses: true   # false: IPs are never read, stored or sent (IP mismatch detection is then off)
+
+discord:
+  default-connection: default
+  fallback-to-default-when-unconfigured: true  # logs whose connection still has a placeholder URL use the default connection
+  startup-validation: true                     # read-only GET check of every connection at startup/reload
+  avatars:
+    enabled: true                              # optional external service; logs work without it
+    url: "https://mc-heads.net/avatar/%uuid%/128"
+  queue:
+    capacity: 2000            # per Discord destination; oldest logs are dropped on overflow
+    max-retries: 5
+    base-backoff-ms: 1000     # exponential backoff
+    max-backoff-ms: 30000
+    request-timeout-ms: 10000
+    min-interval-ms: 500      # minimum spacing between requests to the same webhook
+    shutdown-flush-seconds: 5
+
+storage:
+  backup-before-delete: true  # GUI "Delete Logs" moves files to plugins/ULTRAS_Discord_logs_v1/backups/
+  rotation:
+    enabled: true
+    mode: DAILY               # DAILY | MONTHLY | NONE
+    max-size-mb: 10           # also rotate when a file reaches this size (0 = off)
+    compress-old: true        # gzip rotated files
+    archive: true             # move rotated files to logs/archive/
+    max-files: 30             # per log file
+
+hooks:
+  vault: true
+  luckperms: true
+  vanish:
+    assume-no-when-absent: false   # false: Vanish shows "Unknown" when no vanish plugin is installed

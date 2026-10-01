@@ -1,0 +1,585 @@
+# ULTRAS_Discord_logs_v1 - Discord embed templates.
+# Placeholders: %player% %uuid% %ip% %rank% %world% %x% %y% %z% %gamemode% %executor% %target% %command% %reason% %duration%
+#   %time% %date% %server% %version% %is_op% %is_vanish% %log_id% (+ log specific ones, see README).
+# A field whose placeholders are all unavailable is skipped automatically; partially unavailable values show "Unknown".
+# 'fields' accepts normal fields {name, value, inline, enabled} or {bundle: <name>} to insert a shared group.
+# Language files (messages_en.yml / messages_ar.yml) can override titles (discord.<log>.title) and field names (discord-field-names.<key>).
+discord-messages:
+  _defaults:
+    footer: "ULTRAS | Minecraft Logs"
+    footer-icon: ""
+    timestamp: true
+    thumbnail: "%avatar%"
+    image: ""
+    author-name: ""
+    author-icon: ""
+  _bundles:
+    player:
+      player: {name: "Player", value: "%player%", inline: true}
+      uuid: {name: "UUID", value: "%uuid%", inline: true}
+    state:
+      rank: {name: "Rank", value: "%rank%", inline: true}
+      op: {name: "OP", value: "%is_op%", inline: true}
+      vanish: {name: "Vanish", value: "%is_vanish%", inline: true}
+    where:
+      world: {name: "World", value: "%world%", inline: true}
+      location: {name: "Location", value: "%location%", inline: true}
+    when:
+      date: {name: "Date", value: "%date%", inline: true}
+      time: {name: "Time", value: "%time%", inline: true}
+  join:
+    enabled: true
+    title: "🟢 Player Joined"
+    color: "#57F287"
+    description: ""
+    content: ""
+    fields:
+      player: {bundle: player}
+      state: {bundle: state}
+      where: {bundle: where}
+      platform: {name: "Platform", value: "%platform%", inline: true}
+      session: {name: "Session", value: "%session_type%", inline: true}
+      ip: {name: "IP", value: "%ip%", inline: true}
+      ping: {name: "Ping", value: "%ping% ms", inline: true}
+      when: {bundle: when}
+  quit:
+    enabled: true
+    title: "⚪ Player Left"
+    color: "#99AAB5"
+    description: ""
+    content: ""
+    fields:
+      player: {bundle: player}
+      state: {bundle: state}
+      where: {bundle: where}
+      session_duration: {name: "Session Duration", value: "%session_duration%", inline: true}
+      reason: {name: "Reason", value: "%reason%", inline: true}
+      when: {bundle: when}
+  first-join:
+    enabled: true
+    title: "🎉 First Join"
+    color: "#57F287"
+    description: "A new player joined the server for the first time."
+    content: ""
+    fields:
+      player: {bundle: player}
+      ip: {name: "IP", value: "%ip%", inline: true}
+      platform: {name: "Platform", value: "%platform%", inline: true}
+      first_join_date: {name: "First Join Date", value: "%first_join_date%", inline: true}
+      first_join_time: {name: "First Join Time", value: "%first_join_time%", inline: true}
+      state: {bundle: state}
+      where: {bundle: where}
+      server: {name: "Server", value: "%server% (%version%)", inline: true}
+  player-stats:
+    enabled: true
+    title: "📊 Player Statistics"
+    color: "#5865F2"
+    description: "Statistics of a returning player."
+    content: ""
+    fields:
+      player: {bundle: player}
+      play_time: {name: "Play Time", value: "%stats_play_time%", inline: true}
+      blocks_broken: {name: "Blocks Broken", value: "%stats_blocks_broken%", inline: true}
+      blocks_placed: {name: "Blocks Placed", value: "%stats_blocks_placed%", inline: true}
+      walked: {name: "Walked", value: "%stats_walked%", inline: true}
+      sprinted: {name: "Sprinted", value: "%stats_sprinted%", inline: true}
+      flown: {name: "Flown", value: "%stats_flown%", inline: true}
+      swum: {name: "Swum", value: "%stats_swum%", inline: true}
+      jumps: {name: "Jumps", value: "%stats_jumps%", inline: true}
+      damage_taken: {name: "Damage Taken", value: "%stats_damage_taken%", inline: true}
+      damage_dealt: {name: "Damage Dealt", value: "%stats_damage_dealt%", inline: true}
+      deaths: {name: "Deaths", value: "%stats_deaths%", inline: true}
+      player_kills: {name: "Player Kills", value: "%stats_player_kills%", inline: true}
+      mob_kills: {name: "Mob Kills", value: "%stats_mob_kills%", inline: true}
+      picked_up: {name: "Items Picked Up", value: "%stats_items_picked_up%", inline: true}
+      dropped: {name: "Items Dropped", value: "%stats_items_dropped%", inline: true}
+      crafted: {name: "Items Crafted", value: "%stats_items_crafted%", inline: true}
+      used: {name: "Items Used", value: "%stats_items_used%", inline: true}
+      chests: {name: "Chests Opened", value: "%stats_chests_opened%", inline: true}
+      trades: {name: "Villager Trades", value: "%stats_villager_trades%", inline: true}
+      fish: {name: "Fish Caught", value: "%stats_fish_caught%", inline: true}
+      when: {bundle: when}
+  player-kill:
+    enabled: true
+    title: "⚔️ Player Kill"
+    color: "#FF5555"
+    description: "**%killer_player%** killed **%victim_player%**"
+    content: ""
+    fields:
+      victim: {name: "Victim", value: "%victim_player%", inline: true}
+      killer: {name: "Killer", value: "%killer_player%", inline: true}
+      weapon: {name: "Weapon", value: "%weapon%", inline: true}
+      weapon_enchantments: {name: "Weapon Enchantments", value: "%weapon_enchantments%", inline: true}
+      damage_cause: {name: "Damage Cause", value: "%damage_cause%", inline: true}
+      command: {name: "Command", value: "%command%", inline: true}
+      victim_gamemode: {name: "Victim Gamemode", value: "%victim_gamemode%", inline: true}
+      killer_gamemode: {name: "Killer Gamemode", value: "%killer_gamemode%", inline: true}
+      victim_rank: {name: "Victim Rank", value: "%victim_rank%", inline: true}
+      killer_rank: {name: "Killer Rank", value: "%killer_rank%", inline: true}
+      victim_op: {name: "Victim OP", value: "%victim_is_op%", inline: true}
+      killer_op: {name: "Killer OP", value: "%killer_is_op%", inline: true}
+      victim_vanish: {name: "Victim Vanish", value: "%victim_is_vanish%", inline: true}
+      killer_vanish: {name: "Killer Vanish", value: "%killer_is_vanish%", inline: true}
+      world: {name: "World", value: "%victim_world%", inline: true}
+      victim_location: {name: "Victim Coordinates", value: "%victim_location%", inline: true}
+      killer_location: {name: "Killer Coordinates", value: "%killer_location%", inline: true}
+      when: {bundle: when}
+  death:
+    enabled: true
+    title: "💀 Player Death"
+    color: "#AA0000"
+    description: "%death_message%"
+    content: ""
+    fields:
+      player: {bundle: player}
+      death_cause: {name: "Death Cause", value: "%death_cause%", inline: true}
+      killer_entity: {name: "Killer Entity", value: "%killer_entity%", inline: true}
+      weapon: {name: "Weapon", value: "%weapon%", inline: true}
+      gamemode: {name: "Gamemode", value: "%gamemode%", inline: true}
+      rank: {name: "Rank", value: "%rank%", inline: true}
+      op: {name: "OP", value: "%is_op%", inline: true}
+      vanish: {name: "Vanish", value: "%is_vanish%", inline: true}
+      where: {bundle: where}
+      when: {bundle: when}
+  creative-item:
+    enabled: true
+    title: "🎮 Creative Item"
+    color: "#FF5555"
+    description: ""
+    content: ""
+    fields:
+      player: {bundle: player}
+      item: {name: "Item", value: "%item%", inline: true}
+      material: {name: "Material", value: "%material%", inline: true}
+      amount: {name: "Amount", value: "%amount%", inline: true}
+      enchantments: {name: "Enchantments", value: "%enchantments%", inline: true}
+      custom_name: {name: "Custom Name", value: "%custom_name%", inline: true}
+      item_meta: {name: "Item Meta", value: "%item_meta%", inline: true}
+      gamemode: {name: "Gamemode", value: "%gamemode%", inline: true}
+      state: {bundle: state}
+      where: {bundle: where}
+      server: {name: "Server", value: "%server% (%version%)", inline: true}
+      when: {bundle: when}
+  gamemode:
+    enabled: true
+    title: "🔄 Gamemode Change"
+    color: "#FF5555"
+    description: ""
+    content: ""
+    fields:
+      player: {bundle: player}
+      executor: {name: "Executor", value: "%executor%", inline: true}
+      old_gamemode: {name: "Old Gamemode", value: "%old_gamemode%", inline: true}
+      new_gamemode: {name: "New Gamemode", value: "%new_gamemode%", inline: true}
+      command: {name: "Command", value: "%command%", inline: true}
+      source: {name: "Source", value: "%source%", inline: true}
+      state: {bundle: state}
+      where: {bundle: where}
+      when: {bundle: when}
+  teleport:
+    enabled: true
+    title: "🌀 Teleport"
+    color: "#00E5FF"
+    description: ""
+    content: ""
+    fields:
+      player: {bundle: player}
+      sender: {name: "Sender", value: "%sender%", inline: true}
+      target: {name: "Target", value: "%target%", inline: true}
+      teleport_type: {name: "Teleport Type", value: "%teleport_type%", inline: true}
+      command: {name: "Command", value: "%command%", inline: true}
+      source: {name: "Source", value: "%source%", inline: true}
+      from: {name: "From", value: "%from%", inline: false}
+      to: {name: "To", value: "%to%", inline: false}
+      state: {bundle: state}
+      when: {bundle: when}
+  advancement:
+    enabled: true
+    title: "🏆 Advancement"
+    color: "#FEE75C"
+    description: "%advancement_description%"
+    content: ""
+    fields:
+      player: {bundle: player}
+      advancement: {name: "Advancement", value: "%advancement%", inline: true}
+      category: {name: "Category", value: "%advancement_category%", inline: true}
+      state: {bundle: state}
+      where: {bundle: where}
+      when: {bundle: when}
+  vanish:
+    enabled: true
+    title: "👻 Vanish"
+    color: "#AA55FF"
+    description: ""
+    content: ""
+    fields:
+      player: {bundle: player}
+      action: {name: "Action", value: "%action%", inline: true}
+      previous_state: {name: "Previous State", value: "%previous_state%", inline: true}
+      new_state: {name: "New State", value: "%new_state%", inline: true}
+      executor: {name: "Executor", value: "%executor%", inline: true}
+      command: {name: "Command", value: "%command%", inline: true}
+      rank: {name: "Rank", value: "%rank%", inline: true}
+      op: {name: "OP", value: "%is_op%", inline: true}
+      where: {bundle: where}
+      when: {bundle: when}
+  sign-change:
+    enabled: true
+    title: "🪧 Sign Changed"
+    color: "#99AAB5"
+    description: ""
+    content: ""
+    fields:
+      player: {bundle: player}
+      sign_text: {name: "Text", value: "%sign_text%", inline: false}
+      side: {name: "Side", value: "%side%", inline: true}
+      block_location: {name: "Location", value: "%block_location%", inline: true}
+      when: {bundle: when}
+  book-edit:
+    enabled: true
+    title: "📖 Book Edited"
+    color: "#99AAB5"
+    description: ""
+    content: ""
+    fields:
+      player: {bundle: player}
+      book_title: {name: "Title", value: "%book_title%", inline: true}
+      pages: {name: "Pages", value: "%pages%", inline: true}
+      signed: {name: "Signed", value: "%signed%", inline: true}
+      where: {bundle: where}
+      when: {bundle: when}
+  economy-transaction:
+    enabled: true
+    title: "💰 Economy Transaction"
+    color: "#FEE75C"
+    description: ""
+    content: ""
+    fields:
+      player: {bundle: player}
+      old_balance: {name: "Old Balance", value: "%old_balance%", inline: true}
+      new_balance: {name: "New Balance", value: "%new_balance%", inline: true}
+      cause: {name: "Cause", value: "%cause%", inline: true}
+      source: {name: "Source", value: "%source%", inline: true}
+      when: {bundle: when}
+  item-drop:
+    enabled: true
+    title: "📤 Item Dropped"
+    color: "#99AAB5"
+    description: ""
+    content: ""
+    fields:
+      player: {bundle: player}
+      item: {name: "Item", value: "%item%", inline: true}
+      amount: {name: "Amount", value: "%amount%", inline: true}
+      enchantments: {name: "Enchantments", value: "%enchantments%", inline: true}
+      where: {bundle: where}
+      when: {bundle: when}
+  item-pickup:
+    enabled: true
+    title: "📥 Item Picked Up"
+    color: "#99AAB5"
+    description: ""
+    content: ""
+    fields:
+      player: {bundle: player}
+      item: {name: "Item", value: "%item%", inline: true}
+      amount: {name: "Amount", value: "%amount%", inline: true}
+      enchantments: {name: "Enchantments", value: "%enchantments%", inline: true}
+      where: {bundle: where}
+      when: {bundle: when}
+  container-open:
+    enabled: true
+    title: "📦 Container Opened"
+    color: "#99AAB5"
+    description: ""
+    content: ""
+    fields:
+      player: {bundle: player}
+      container: {name: "Container", value: "%container%", inline: true}
+      container_location: {name: "Location", value: "%container_location%", inline: true}
+      when: {bundle: when}
+  block-break:
+    enabled: true
+    title: "⛏️ Block Broken"
+    color: "#99AAB5"
+    description: ""
+    content: ""
+    fields:
+      player: {bundle: player}
+      block: {name: "Block", value: "%block%", inline: true}
+      block_location: {name: "Location", value: "%block_location%", inline: true}
+      when: {bundle: when}
+  block-place:
+    enabled: true
+    title: "🧱 Block Placed"
+    color: "#99AAB5"
+    description: ""
+    content: ""
+    fields:
+      player: {bundle: player}
+      block: {name: "Block", value: "%block%", inline: true}
+      block_location: {name: "Location", value: "%block_location%", inline: true}
+      when: {bundle: when}
+  punishments:
+    enabled: true
+    title: "%punishment_emoji% %punishment_type%"
+    color: "#FF5555"
+    description: ""
+    content: ""
+    fields:
+      target: {name: "Target", value: "%target%", inline: true}
+      uuid: {name: "UUID", value: "%uuid%", inline: true}
+      executor: {name: "Executor", value: "%executor%", inline: true}
+      reason: {name: "Reason", value: "%reason%", inline: false}
+      duration: {name: "Duration", value: "%duration%", inline: true}
+      source: {name: "Source", value: "%source%", inline: true}
+      confirmation: {name: "Confirmation", value: "%confirmation%", inline: true}
+      rank: {name: "Rank", value: "%rank%", inline: true}
+      op: {name: "OP", value: "%is_op%", inline: true}
+      vanish: {name: "Vanish", value: "%is_vanish%", inline: true}
+      where: {bundle: where}
+      when: {bundle: when}
+  freeze:
+    enabled: true
+    title: "🧊 %action%"
+    color: "#00E5FF"
+    description: ""
+    content: ""
+    fields:
+      player: {bundle: player}
+      executor: {name: "Executor", value: "%executor%", inline: true}
+      reason: {name: "Reason", value: "%reason%", inline: false}
+      command: {name: "Command", value: "%command%", inline: true}
+      state: {bundle: state}
+      where: {bundle: where}
+      when: {bundle: when}
+  chat:
+    enabled: true
+    title: "💬 Chat"
+    color: "#99AAB5"
+    description: "%message%"
+    content: ""
+    fields:
+      player: {bundle: player}
+      rank: {name: "Rank", value: "%rank%", inline: true}
+      where: {bundle: where}
+      when: {bundle: when}
+  commands:
+    enabled: true
+    title: "⌨️ Command"
+    color: "#FEE75C"
+    description: "```%command%```"
+    content: ""
+    fields:
+      player: {bundle: player}
+      target: {name: "Target", value: "%target%", inline: true}
+      result: {name: "Result", value: "%result%", inline: true}
+      plugin: {name: "Plugin", value: "%plugin%", inline: true}
+      state: {bundle: state}
+      where: {bundle: where}
+      when: {bundle: when}
+  ip-mismatch:
+    enabled: true
+    title: "⚠️ Potential Account/IP Mismatch"
+    color: "#FF9900"
+    description: "This is a neutral signal, not proof of a compromised account."
+    content: ""
+    fields:
+      account: {name: "Account Name", value: "%account_name%", inline: true}
+      uuid: {name: "UUID", value: "%uuid%", inline: true}
+      current_ip: {name: "Current IP", value: "%current_ip%", inline: true}
+      previous_ip: {name: "Previous IP", value: "%previous_ip%", inline: true}
+      first_seen_ip: {name: "First Seen IP", value: "%first_seen_ip%", inline: true}
+      first_seen_date: {name: "First Seen Date", value: "%first_seen_date%", inline: true}
+      others_current: {name: "Other Accounts (Current IP)", value: "%other_accounts_current%", inline: false}
+      others_previous: {name: "Other Accounts (Previous IP)", value: "%other_accounts_previous%", inline: false}
+      linked: {name: "Linked Accounts", value: "%linked_accounts%", inline: true}
+      last_login: {name: "Last Login", value: "%last_login%", inline: true}
+      platform: {name: "Platform", value: "%platform%", inline: true}
+      rank: {name: "Rank", value: "%rank%", inline: true}
+      op: {name: "OP", value: "%is_op%", inline: true}
+      where: {bundle: where}
+      when: {bundle: when}
+  op-change:
+    enabled: true
+    title: "🛡️ %action%"
+    color: "#FF9900"
+    description: ""
+    content: ""
+    thumbnail: ""
+    fields:
+      target: {name: "Target", value: "%target%", inline: true}
+      executor: {name: "Executor", value: "%executor%", inline: true}
+      source: {name: "Source", value: "%source%", inline: true}
+      command: {name: "Command", value: "%command%", inline: true}
+      confirmation: {name: "Confirmation", value: "%confirmation%", inline: true}
+      when: {bundle: when}
+  whitelist-change:
+    enabled: true
+    title: "📝 %action%"
+    color: "#FF9900"
+    description: ""
+    content: ""
+    thumbnail: ""
+    fields:
+      target: {name: "Target", value: "%target%", inline: true}
+      executor: {name: "Executor", value: "%executor%", inline: true}
+      source: {name: "Source", value: "%source%", inline: true}
+      command: {name: "Command", value: "%command%", inline: true}
+      confirmation: {name: "Confirmation", value: "%confirmation%", inline: true}
+      when: {bundle: when}
+  permission-change:
+    enabled: true
+    title: "🔑 Permission Change"
+    color: "#FF9900"
+    description: ""
+    content: ""
+    thumbnail: ""
+    fields:
+      target: {name: "Target", value: "%target%", inline: true}
+      target_type: {name: "Type", value: "%target_type%", inline: true}
+      added: {name: "Added", value: "%added%", inline: false}
+      removed: {name: "Removed", value: "%removed%", inline: false}
+      source: {name: "Source", value: "%source%", inline: true}
+      when: {bundle: when}
+  server-top:
+    enabled: true
+    title: "🏅 Server Top"
+    color: "#5865F2"
+    description: ""
+    content: ""
+    thumbnail: ""
+    fields:
+      kills: {name: "Top Kills", value: "%top_kills%", inline: false}
+      deaths: {name: "Top Deaths", value: "%top_deaths%", inline: false}
+      blocks_broken: {name: "Top Blocks Broken", value: "%top_blocks_broken%", inline: false}
+      blocks_placed: {name: "Top Blocks Placed", value: "%top_blocks_placed%", inline: false}
+      playtime: {name: "Top Playtime", value: "%top_playtime%", inline: false}
+      distance: {name: "Top Distance", value: "%top_distance%", inline: false}
+      damage_dealt: {name: "Top Damage", value: "%top_damage_dealt%", inline: false}
+      mob_kills: {name: "Top Mob Kills", value: "%top_mob_kills%", inline: false}
+  server-stats:
+    enabled: true
+    title: "📈 Server Statistics"
+    color: "#5865F2"
+    description: ""
+    content: ""
+    thumbnail: ""
+    fields:
+      online: {name: "Online Players", value: "%online% / %max_players%", inline: true}
+      total_joins: {name: "Total Joins", value: "%total_joins%", inline: true}
+      total_quits: {name: "Total Quits", value: "%total_quits%", inline: true}
+      active_players: {name: "Active Players", value: "%active_players%", inline: true}
+      unique_players: {name: "Unique Players", value: "%unique_players%", inline: true}
+      new_players: {name: "New Players", value: "%new_players%", inline: true}
+      punish_total: {name: "Total Punishments", value: "%punish_total%", inline: true}
+      punish_bans: {name: "Bans", value: "%punish_bans%", inline: true}
+      punish_kicks: {name: "Kicks", value: "%punish_kicks%", inline: true}
+      punish_mutes: {name: "Mutes", value: "%punish_mutes%", inline: true}
+      punish_warns: {name: "Warnings", value: "%punish_warns%", inline: true}
+      deaths: {name: "Deaths", value: "%deaths%", inline: true}
+      player_kills: {name: "Player Kills", value: "%player_kills%", inline: true}
+      commands: {name: "Commands", value: "%commands%", inline: true}
+      chat_messages: {name: "Chat Messages", value: "%chat_messages%", inline: true}
+      most_active: {name: "Most Active Players", value: "%most_active%", inline: false}
+      uptime: {name: "Uptime", value: "%uptime%", inline: true}
+      tps: {name: "TPS", value: "%tps%", inline: true}
+      mspt: {name: "MSPT", value: "%mspt%", inline: true}
+      memory: {name: "Memory", value: "%memory%", inline: true}
+      cpu: {name: "CPU", value: "%cpu%", inline: true}
+      version: {name: "Version", value: "%version%", inline: true}
+      java_version: {name: "Java", value: "%java_version%", inline: true}
+      plugins_count: {name: "Plugins", value: "%plugins_count%", inline: true}
+      worlds_count: {name: "Worlds", value: "%worlds_count%", inline: true}
+  server-start:
+    enabled: true
+    title: "🟢 Server Started"
+    color: "#57F287"
+    description: ""
+    content: ""
+    thumbnail: ""
+    fields:
+      server: {name: "Server", value: "%server%", inline: true}
+      version: {name: "Version", value: "%version%", inline: true}
+      plugins_count: {name: "Plugins", value: "%plugins_count%", inline: true}
+      when: {bundle: when}
+  server-stop:
+    enabled: true
+    title: "🔴 Server Stopping"
+    color: "#AA0000"
+    description: ""
+    content: ""
+    thumbnail: ""
+    fields:
+      server: {name: "Server", value: "%server%", inline: true}
+      version: {name: "Version", value: "%version%", inline: true}
+      when: {bundle: when}
+  server-reload:
+    enabled: true
+    title: "🔁 Server Reloaded"
+    color: "#FEE75C"
+    description: ""
+    content: ""
+    thumbnail: ""
+    fields:
+      server: {name: "Server", value: "%server%", inline: true}
+      plugins_count: {name: "Plugins", value: "%plugins_count%", inline: true}
+      when: {bundle: when}
+  world-load:
+    enabled: true
+    title: "🗺️ World Loaded"
+    color: "#99AAB5"
+    description: ""
+    content: ""
+    thumbnail: ""
+    fields:
+      world_name: {name: "World", value: "%world_name%", inline: true}
+      environment: {name: "Environment", value: "%environment%", inline: true}
+      when: {bundle: when}
+  world-unload:
+    enabled: true
+    title: "🗺️ World Unloaded"
+    color: "#99AAB5"
+    description: ""
+    content: ""
+    thumbnail: ""
+    fields:
+      world_name: {name: "World", value: "%world_name%", inline: true}
+      environment: {name: "Environment", value: "%environment%", inline: true}
+      when: {bundle: when}
+  gamerule:
+    enabled: true
+    title: "📏 Gamerule Changed"
+    color: "#FEE75C"
+    description: ""
+    content: ""
+    thumbnail: ""
+    fields:
+      world: {name: "World", value: "%world%", inline: true}
+      gamerule: {name: "Gamerule", value: "%gamerule%", inline: true}
+      value: {name: "Value", value: "%value%", inline: true}
+      executor: {name: "Executor", value: "%executor%", inline: true}
+      when: {bundle: when}
+  weather:
+    enabled: true
+    title: "🌦️ Weather Change"
+    color: "#00E5FF"
+    description: ""
+    content: ""
+    thumbnail: ""
+    fields:
+      world: {name: "World", value: "%world%", inline: true}
+      weather: {name: "Weather", value: "%weather%", inline: true}
+      when: {bundle: when}
+  time-change:
+    enabled: true
+    title: "🕒 Time Skipped"
+    color: "#00E5FF"
+    description: ""
+    content: ""
+    thumbnail: ""
+    fields:
+      world: {name: "World", value: "%world%", inline: true}
+      skip_reason: {name: "Reason", value: "%skip_reason%", inline: true}
+      skip_amount: {name: "Amount", value: "%skip_amount%", inline: true}
+      when: {bundle: when}

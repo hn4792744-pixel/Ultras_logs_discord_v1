@@ -1,0 +1,99 @@
+# Discord connections.
+#
+# WEBHOOK (recommended, default): needs only "webhook-url". No bot, no token.
+# BOT (optional): needs "token" and "channel-id". Never put both a webhook-url and a token in one connection.
+#
+# Webhook URLs and bot tokens are SECRETS: never share them. They are never printed by the plugin.
+# Each connection is independent. Many logs may share one connection, and one log can have its own.
+# Connections pointing to the same Discord destination automatically share one queue and rate limiter.
+
+discord:
+  default-connection: default
+
+  connections:
+    default:
+      type: WEBHOOK
+      webhook-url: "WEBHOOK_URL_HERE"
+      username: "ULTRAS | Logs"
+      avatar-url: ""
+      allowed-mentions: {users: false, roles: false, everyone: false}
+
+    players:
+      type: WEBHOOK
+      webhook-url: "WEBHOOK_URL_FOR_PLAYERS"
+      username: "ULTRAS | Players"
+      allowed-mentions: {users: false, roles: false, everyone: false}
+
+    join:
+      type: WEBHOOK
+      webhook-url: "WEBHOOK_URL_FOR_JOIN"
+      username: "ULTRAS | Join"
+
+    quit:
+      type: WEBHOOK
+      webhook-url: "WEBHOOK_URL_FOR_QUIT"
+      username: "ULTRAS | Quit"
+
+    gamemode:
+      type: WEBHOOK
+      webhook-url: "WEBHOOK_URL_FOR_GAMEMODE"
+      username: "ULTRAS | Gamemode"
+
+    teleport:
+      type: WEBHOOK
+      webhook-url: "WEBHOOK_URL_FOR_TELEPORT"
+      username: "ULTRAS | Teleport"
+
+    punishments:
+      type: WEBHOOK
+      webhook-url: "WEBHOOK_URL_FOR_PUNISHMENTS"
+      username: "ULTRAS | Punishments"
+      avatar-url: ""
+      allowed-mentions: {users: false, roles: false, everyone: false}
+
+    deaths:
+      type: WEBHOOK
+      webhook-url: "WEBHOOK_URL_FOR_DEATHS"
+      username: "ULTRAS | Deaths"
+
+    chat:
+      type: WEBHOOK
+      webhook-url: "WEBHOOK_URL_FOR_CHAT"
+      username: "ULTRAS | Chat"
+      # thread-id: "123456789012345678"   # post into an existing thread
+      # thread-name: "Chat logs"          # forum channels: create a post with this name
+
+    commands:
+      type: WEBHOOK
+      webhook-url: "WEBHOOK_URL_FOR_COMMANDS"
+      username: "ULTRAS | Commands"
+
+    security:
+      type: WEBHOOK
+      webhook-url: "WEBHOOK_URL_FOR_SECURITY"
+      username: "ULTRAS | Security"
+
+    gameplay:
+      type: WEBHOOK
+      webhook-url: "WEBHOOK_URL_FOR_GAMEPLAY"
+      username: "ULTRAS | Gameplay"
+
+    statistics:
+      type: WEBHOOK
+      webhook-url: "WEBHOOK_URL_FOR_STATISTICS"
+      username: "ULTRAS | Statistics"
+
+    server:
+      type: WEBHOOK
+      webhook-url: "WEBHOOK_URL_FOR_SERVER"
+      username: "ULTRAS | Server"
+
+    # Optional bot example (delete the leading # to use it; BOT identity cannot be customised per message):
+    # staff:
+    #   type: BOT
+    #   token: "BOT_TOKEN_HERE"
+    #   channel-id: "CHANNEL_ID"
+    staff:
+      type: WEBHOOK
+      webhook-url: "WEBHOOK_URL_FOR_STAFF"
+      username: "ULTRAS | Staff"
